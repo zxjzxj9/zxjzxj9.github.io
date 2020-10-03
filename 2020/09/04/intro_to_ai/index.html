@@ -14,7 +14,7 @@
 <meta property="og:description" content="Real word with dataWe are living in a real world filled with data. Everyday, there are exa-($10^{18}$) magnitude of data[1] generated in the worldwide. There is one thing that people always care about">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-09-04T10:57:34.000Z">
-<meta property="article:modified_time" content="2020-10-02T14:26:47.803Z">
+<meta property="article:modified_time" content="2020-10-03T14:48:19.010Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Artificial Intelligence">
 <meta name="twitter:card" content="summary">
@@ -55,7 +55,8 @@
     
 <meta name="generator" content="Hexo 5.1.1"></head>
 
-<body class="max-width mx-auto px3 ltr">    
+<body class="max-width mx-auto px3 ltr">
+    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -151,7 +152,8 @@
   <div class="content" itemprop="articleBody">
     <h1 id="Real-word-with-data"><a href="#Real-word-with-data" class="headerlink" title="Real word with data"></a>Real word with data</h1><p>We are living in a real world filled with data. Everyday, there are <strong>exa-</strong>($10^{18}$) magnitude of data[1] generated in the worldwide. There is one thing that people always care about, how can we make use of these overwhelming data? One simple solution is just to store these data, and when the data is needed, we just replay the one stored in our database. However, the real world is always much more complicated that we think. In most situations, we are not lucky enough to get the right data we want. And there are also cases such as the data is too complicated (i.e. we need large aspects, or dimensions to describe single data) or too large amount of data so people can not easily search within the data. To recap, real world is always much more complicated than we imagine, and it is usually a hard task to describe the world using the raw data we have collected. In this case, what we need is a “model”, which has some ability to predict the pattern of the real world data (i.e. so-called <strong>pattern recognition</strong>). How to model the data is the central problem in <strong>machine learning</strong> and <strong>deep learning</strong>. </p>
 <p>You may wonder what is so-called “the pattern” of the data. Well, we have a powerful tool to describe data distributions, which is <strong>statistics</strong>. Many readers may already have been familiar with this subject, and I will make a brief introduce to this topic.</p>
-<h1 id="Probability-distributions-and-dataset"><a href="#Probability-distributions-and-dataset" class="headerlink" title="Probability distributions and dataset"></a>Probability distributions and dataset</h1><h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] <a target="_blank" rel="noopener" href="https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read">https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read</a></p>
+<h1 id="Probability-distributions-and-dataset"><a href="#Probability-distributions-and-dataset" class="headerlink" title="Probability distributions and dataset"></a>Probability distributions and dataset</h1><p>In the perspective of machine learning, we can always model the dataset using a parameterized distribution $P_\theta(X_{data})$, where $\theta$ is the parameter, and $X_{data}$ is the dataset. Given the assumption that dataset is labeled (such as the example of image classification, where each image is categorized into a class) or unlabeled (such as the example of clustering, where the data is classified into different clusters).</p>
+<h1 id="References"><a href="#References" class="headerlink" title="References"></a>References</h1><p>[1] <a target="_blank" rel="noopener" href="https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read">https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read</a></p>
 
   </div>
 </article>
@@ -304,20 +306,5 @@
     </script>
 
 
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
