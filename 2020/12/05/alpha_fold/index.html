@@ -14,7 +14,7 @@
 <meta property="og:description" content="IntroductionRecently, AlphaFold becomes a hot topic due to its extraordinary abilities in predicting protein structures. This is a giant leap in structural biology.  Since this method shows great abil">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-05T13:36:23.000Z">
-<meta property="article:modified_time" content="2020-12-06T14:19:53.638Z">
+<meta property="article:modified_time" content="2020-12-18T14:36:31.465Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Machine Learning, Deep Learning">
 <meta name="twitter:card" content="summary">
@@ -111,7 +111,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AlphaFold-Part-I"><span class="toc-number">2.</span> <span class="toc-text">AlphaFold, Part I</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Basics-of-AlphaFold"><span class="toc-number">2.1.</span> <span class="toc-text">1. Basics of AlphaFold</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AlphaFold-Part-I"><span class="toc-number">2.</span> <span class="toc-text">AlphaFold, Part I</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Basics-of-AlphaFold"><span class="toc-number">2.1.</span> <span class="toc-text">1. Basics of AlphaFold</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Alpha-Fold-Part-II"><span class="toc-number">3.</span> <span class="toc-text">Alpha Fold Part II</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -152,8 +152,9 @@
   <div class="content" itemprop="articleBody">
     <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Recently, AlphaFold becomes a hot topic due to its extraordinary abilities in predicting protein structures. This is a giant leap in structural biology.  Since this method shows great ability in predicting protein conformations, I decide to write this blog in order to give a comprehensive understanding of the algorithm behind AlphaFold. Up to now only a description of the first version of AlphaFold is published, so this blog will introduce the first version of AlphaFold, see this <a target="_blank" rel="noopener" href="https://doi.org/10.1038/s41586-019-1923-7">link</a>.</p>
 <h1 id="AlphaFold-Part-I"><a href="#AlphaFold-Part-I" class="headerlink" title="AlphaFold, Part I"></a>AlphaFold, Part I</h1><h2 id="1-Basics-of-AlphaFold"><a href="#1-Basics-of-AlphaFold" class="headerlink" title="1. Basics of AlphaFold"></a>1. Basics of AlphaFold</h2><p>AlphaFold uses the distance between $C_\beta$ atoms to predict the protein structure. This distance is important, since it represents the distance between amino residues in proteins. While in PDB database, a lot of known proteins structures can be retrieved, it can provide training dataset for the AlphaFold’s deep learning model. One parts of AlphaFold is a convolution neural network to encode amino sequences into space distances $d_{ij}$ and torsion angel $\left(\phi_i, \psi_i\right)$.</p>
+<p>Suppose the known amino acid sequence is $S$ with length $L$, AlphaFold try to solve the problem of predicting a $64 \times 64$ region, sampled from the $L \times L$ distance matrix ($d_{ij}$ between $C_\beta$) as mentioned before. This can be converted into a classification problem, provided the distance is represented as a discrete distribution (i.e. a histogram, where each bin in the histogram represents a range of distances). What AlphaFold do is training a model which maximize the probability $P(d_{i,j}|S)$.</p>
 <p>In order to minimize the memory consumptions, the AlphaFold model using a sampling strategy to sample part of the proteins, and predict their connections. </p>
-
+<h1 id="Alpha-Fold-Part-II"><a href="#Alpha-Fold-Part-II" class="headerlink" title="Alpha Fold Part II"></a>Alpha Fold Part II</h1>
   </div>
 </article>
 
@@ -184,7 +185,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AlphaFold-Part-I"><span class="toc-number">2.</span> <span class="toc-text">AlphaFold, Part I</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Basics-of-AlphaFold"><span class="toc-number">2.1.</span> <span class="toc-text">1. Basics of AlphaFold</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#AlphaFold-Part-I"><span class="toc-number">2.</span> <span class="toc-text">AlphaFold, Part I</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Basics-of-AlphaFold"><span class="toc-number">2.1.</span> <span class="toc-text">1. Basics of AlphaFold</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Alpha-Fold-Part-II"><span class="toc-number">3.</span> <span class="toc-text">Alpha Fold Part II</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
