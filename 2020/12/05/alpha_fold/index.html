@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://zxjzxj9.github.io/alpha_fold_fig1.png">
 <meta property="article:published_time" content="2020-12-05T13:36:23.000Z">
-<meta property="article:modified_time" content="2021-01-01T10:14:32.104Z">
+<meta property="article:modified_time" content="2021-01-08T15:05:21.783Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Machine Learning, Deep Learning">
 <meta name="twitter:card" content="summary">
@@ -161,6 +161,13 @@
 <li>Number of HHblits alignments (scalar)</li>
 <li>Sequence-length features: 1-hot amino acid type (21 features); other useful profile-based features</li>
 <li>Sequence-length-squared features</li>
+</ul>
+<p>Moreover, we can find the described neural network structures as follows, and the total loss is the weighted sum of RMSD, secondary structure and accessible surface area. The three components can ensure a good prediction of the protein distance as well as the macroscopic structure.</p>
+<ul>
+<li>7 groups of 4 blocks with 256 channels, cycling through dilations<br>1,2,4,8.</li>
+<li>48 groups of 4 blocks with 128 channels, cycling through dilations<br>1,2,4,8.</li>
+<li>Using ELU function as the activation function</li>
+<li>Auxiliary loss weights: secondary structure: 0.005; accessible sur-<br>face area: 0.001. These auxiliary losses were cut by a factor 10 after<br>100 000 steps.</li>
 </ul>
 <p>The above features are then fed into neural networks to make distrogram prediction. The neural network is 2d dilated convolutional residual network. Amino acids are encoding into hidden vectors using 1d embedding layers, then they are combined into 2d feature maps, and fed into 2d convolutional neural networks to predict their distances.</p>
 <p><img src="/./alpha_fold_fig1.png" alt="Figure 1"></p>
