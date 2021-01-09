@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://zxjzxj9.github.io/alpha_fold_fig1.png">
 <meta property="article:published_time" content="2020-12-05T13:36:23.000Z">
-<meta property="article:modified_time" content="2021-01-08T15:05:21.783Z">
+<meta property="article:modified_time" content="2021-01-09T08:03:39.222Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Machine Learning, Deep Learning">
 <meta name="twitter:card" content="summary">
@@ -168,6 +168,7 @@
 <li>48 groups of 4 blocks with 128 channels, cycling through dilations<br>1,2,4,8.</li>
 <li>Using ELU function as the activation function</li>
 <li>Auxiliary loss weights: secondary structure: 0.005; accessible sur-<br>face area: 0.001. These auxiliary losses were cut by a factor 10 after<br>100 000 steps.</li>
+<li>The target is a quantification of the distance between the $C_\beta$ atoms of the residues (or $C_\alpha$ atoms for glycine). The range is between 2-22 Å is equally divided into 64 bins, then the problem is converted to minimize the cross entropy for distance bin classification. The input features are 2-D, which is the concatenation of embedding of 1-D features of each residues with the 2-D features between residues.</li>
 </ul>
 <p>The above features are then fed into neural networks to make distrogram prediction. The neural network is 2d dilated convolutional residual network. Amino acids are encoding into hidden vectors using 1d embedding layers, then they are combined into 2d feature maps, and fed into 2d convolutional neural networks to predict their distances.</p>
 <p><img src="/./alpha_fold_fig1.png" alt="Figure 1"></p>
