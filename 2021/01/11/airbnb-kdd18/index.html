@@ -14,7 +14,7 @@
 <meta property="og:description" content="IntroductionSince I will some recommendation system related stuffs in my new job, I would like to read some papers on recommendation systems from now on. This time I’m going to introduce a paper in KD">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-11T13:46:14.000Z">
-<meta property="article:modified_time" content="2021-01-27T14:12:06.701Z">
+<meta property="article:modified_time" content="2021-01-28T14:38:04.525Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Recommendation System, KDD">
 <meta name="twitter:card" content="summary">
@@ -156,7 +156,7 @@
 
   <div class="content" itemprop="articleBody">
     <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>Since I will some recommendation system related stuffs in my new job, I would like to read some papers on recommendation systems from now on. This time I’m going to introduce a paper in KDD18, whose name is: <em>Real-time Personalization using Embeddings for Search Ranking at Airbnb</em> (<a target="_blank" rel="noopener" href="https://dl.acm.org/doi/pdf/10.1145/3219819.3219885">paper link</a>), which introduces the embedding method for search ranking.</p>
-<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>In many situations, the company may need to optimize the search results between users and items, meaning given input query with different features, the model needs to output a ranking of the items. This can further formulate the problem as pairwise regression with positive utilities for booking and negative utilities for rejections. Beside, user’s historical data can be utilized into the model, including positive and negative signal to give user a better recommendation. In order to achieve the target to rank the search results, this paper proposed listing embeddings, low-dimensional vector representations learned from search sessions.</p>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>In many situations, the company may need to optimize the search results between users and items, meaning given input query with different features, the model needs to output a ranking of the items. This can further formulate the problem as pairwise regression with positive utilities for booking and negative utilities for rejections. Beside, user’s historical data can be utilized into the model, including positive and negative signal to give user a better recommendation. In order to achieve the target to rank the search results, this paper proposed listing embeddings, low-dimensional vector representations learned from search sessions. Besides the above embeddings for user’s short time interests, this paper also introduces another types of embeddings trained on booking in order to capture user’s long time behaviors. The listing type embeddings are in the same space as user type embeddings, so both user and listing type can search and rank the results at the same time.</p>
 
   </div>
 </article>
