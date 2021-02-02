@@ -14,7 +14,7 @@
 <meta property="og:description" content="IntroductionSince I will some recommendation system related stuffs in my new job, I would like to read some papers on recommendation systems from now on. This time I’m going to introduce a paper in KD">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-11T13:46:14.000Z">
-<meta property="article:modified_time" content="2021-02-01T15:27:21.377Z">
+<meta property="article:modified_time" content="2021-02-02T14:54:57.868Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Recommendation System, KDD">
 <meta name="twitter:card" content="summary">
@@ -160,7 +160,10 @@
 <p>The embedding training here is quite similar to the way using neural networks to solve NLP problems, such as CBOW and SG, by considering both words order and their occurrence.</p>
 <h2 id="Methodology"><a href="#Methodology" class="headerlink" title="Methodology"></a>Methodology</h2><p>As mentioned before, embedding has played an important role in NLP related problems. Recommendation systems have borrowed the idea of embeddings from NLP fields, and more importantly, user embeddings and item embeddings can be mapped into the same space which can directly calculate the similarity between user and items.</p>
 <p>Given a set $\mathcal{S}$ of $S$ click sessions from $N$ users, where each session $s = (l_1, l_2,…,l_M) \in \mathcal{S}$, which defined M listing ids clicked by the user. Two sessions has an interval of 30 mins for the same user. Given the dataset, the problem can be described as learning a $d$-dimensional real-valued representation $\mathbf{v}<em>{l_i} \in \mathbb{R}^d $ of listing $l_i$, which is the embedding of the $i</em>{th}$ items. The loss function can be described as follows. It is the sum of the negative log probability of a sliding windows, which is conditioned by the previous recordings.</p>
-<p>$$\mathcal{L} = -\sum_{s\in \mathcal{S}} \sum_{l_i \in S}\sum_{-m\le j\le m, i\ne 0}log P(l_{j+1}|l_j)$$</p>
+<p>$$\mathcal{L} = -\sum_{s\in \mathcal{S}} \sum_{l_i \in S}\sum_{-m\le j\le m, i\ne 0}log P(l_{i+j}|l_j)$$</p>
+<p>The probability, on the other hand, can be easily described as the dot product between the embeddings as follows.</p>
+<p>$$ log P(l_{i+j}|l_j) = \frac{exp(\mathbf{v}<em>i^\top\mathbf{v}’</em>{i+j})}{\sum_{l=1}^{\mathcal{V}} exp(\mathbf{v}<em>i^\top\mathbf{v}’</em>{l})} $$</p>
+<p>We can notice this equation is quite similar to the one in word2vec. In fact the underlying idea of these two methods are identical, as we have mentioned before, so some techniques in word2vec can also be applied to this problem, including negative sampling.</p>
 
   </div>
 </article>
