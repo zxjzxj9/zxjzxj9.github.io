@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://zxjzxj9.github.io/airbnb-kdd18-fig1.png">
 <meta property="article:published_time" content="2021-01-11T13:46:14.000Z">
-<meta property="article:modified_time" content="2021-02-14T12:13:14.089Z">
+<meta property="article:modified_time" content="2021-02-15T15:47:07.082Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Recommendation System, KDD">
 <meta name="twitter:card" content="summary">
@@ -172,6 +172,7 @@
 <p><img src="/./airbnb-kdd18-fig1.png" alt="Figure 1"></p>
 <p>Users of online searching may want to look into a series of items groups that are very similar. As the example in the paper, user may search markets that near the place they want to visit. This suggests another technique for negative sampling: instead of random negative sampling, just do negative sampling in the context of positive samples. The negative set is noted as $\mathcal{D}_{m_n}$, and the loss function could be displayed as follows.</p>
 <p>$$\mathcal{L} = -\left( \sum_{l, c \in \mathcal{D}<em>p}\frac{1}{1+e^{-\mathbf{v}_c^\top\mathbf{v}’_l}} + \sum</em>{l, c \in \mathcal{D}<em>n}\frac{1}{1+e^{\mathbf{v}_c^\top\mathbf{v}’_l}} +  \frac{1}{1+e^{-\mathbf{v}</em>{l_b}^\top\mathbf{v}’<em>l}}  +  \sum</em>{l, m_n \in \mathcal{D}_{m_n}}\frac{1}{1+e^{\mathbf{v}_{m_n}^\top\mathbf{v}’_l}} \right) $$</p>
+<p>Another problem is code start of the whole recommendation system. Obviously at first, we don’t have any embeddings because the click data are not available. In order to alleviate this issue, the initial embedding could be learnt from the nearby embeddings. By average the geographical nearby 3 similar embeddings, this averaged vector could be utilized as the initial embedding.</p>
 
   </div>
 </article>
