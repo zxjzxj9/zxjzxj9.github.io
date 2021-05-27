@@ -13,13 +13,11 @@
 <meta property="og:site_name" content="Victor Zhang&#39;s Blog">
 <meta property="og:description" content="IntroductionRecently, AlphaFold becomes a hot topic due to its extraordinary abilities in predicting protein structures. This is a giant leap in structural biology.  Since this method shows great abil">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://zxjzxj9.github.io/.io//alpha_fold_fig1.png">
 <meta property="article:published_time" content="2020-12-05T13:36:23.000Z">
 <meta property="article:modified_time" content="2021-01-10T13:53:45.782Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Machine Learning, Deep Learning">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://zxjzxj9.github.io/.io//alpha_fold_fig1.png">
     
     
         
@@ -61,8 +59,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
+<body class="max-width mx-auto px3 ltr">    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -174,7 +171,8 @@
 <li>The target is a quantification of the distance between the $C_\beta$ atoms of the residues (or $C_\alpha$ atoms for glycine). The range is between 2-22 Å is equally divided into 64 bins, then the problem is converted to minimize the cross entropy for distance bin classification. The input features are 2-D, which is the concatenation of embedding of 1-D features of each residues with the 2-D features between residues.</li>
 </ul>
 <p>The above features are then fed into neural networks to make distrogram prediction. The neural network is 2d dilated convolutional residual network. Amino acids are encoding into hidden vectors using 1d embedding layers, then they are combined into 2d feature maps, and fed into 2d convolutional neural networks to predict their distances.</p>
-<p><img src="/.io//alpha_fold_fig1.png" alt="Figure 1"></p>
+
+
 <p>To predict the accurate protein structure, not only the distance between amino residues are needed, but also we need the dihedral and torsion angles between amino resides. This requires modelling the probability distribution $P\left(\phi_i, \psi_i\right|S, MSA(S))$. This probability is also discretized into many bins (every $10\degree$, in total $36 \times 36 = 1296$), this can sever as the potential which can be minimized to get a more accurate protein structure.</p>
 <p>In order to minimize the memory consumptions, the AlphaFold model using a sampling strategy to sample part of the proteins, and predict their connections. </p>
 <h1 id="Alpha-Fold-Part-II"><a href="#Alpha-Fold-Part-II" class="headerlink" title="Alpha Fold Part II"></a>Alpha Fold Part II</h1>
@@ -329,5 +327,20 @@
     </script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

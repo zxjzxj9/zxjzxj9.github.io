@@ -13,13 +13,11 @@
 <meta property="og:site_name" content="Victor Zhang&#39;s Blog">
 <meta property="og:description" content="IntroductionSince I will some recommendation system related stuffs in my new job, I would like to read some papers on recommendation systems from now on. This time I’m going to introduce a paper in KD">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://zxjzxj9.github.io/.io//airbnb-kdd18-fig1.png">
 <meta property="article:published_time" content="2021-01-11T13:46:14.000Z">
 <meta property="article:modified_time" content="2021-02-21T15:40:33.278Z">
 <meta property="article:author" content="Victor (Xiao-Jie) Zhang">
 <meta property="article:tag" content="Recommendation System, KDD">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://zxjzxj9.github.io/.io//airbnb-kdd18-fig1.png">
     
     
         
@@ -61,8 +59,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
 <!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
 
-<body class="max-width mx-auto px3 ltr">
-    
+<body class="max-width mx-auto px3 ltr">    
       <div id="header-post">
   <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
   <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
@@ -169,12 +166,13 @@
 <p>The probability, on the other hand, can be easily described as the dot product between the embeddings as follows.</p>
 <p>$$ log P(l_{i+j}|l_j) = \frac{exp(\mathbf{v}<em>i^\top\mathbf{v}’</em>{i+j})}{\sum_{l=1}^{\mathcal{V}} exp(\mathbf{v}<em>i^\top\mathbf{v}’</em>{l})} $$</p>
 <p>We can notice this equation is quite similar to the one in word2vec. In fact the underlying idea of these two methods are identical, as we have mentioned before, so some techniques in word2vec can also be applied to this problem, including negative sampling. By sampling positively related pairs $(l, c)$ from the datasets and randomly related pairs $(l, c)$ from the vocabulary, then the loss function could be expressed as follows. </p>
-<p>$$ \mathcal{L} = -\left( \sum_{l, c \in \mathcal{D}<em>p}\frac{1}{1+e^{-\mathbf{v}_c^\top\mathbf{v}’_l}} + \sum</em>{l, c \in \mathcal{D}_n}\frac{1}{1+e^{\mathbf{v}_c^\top\mathbf{v}’_l}}\right)$$</p>
+<p>$$ \mathcal{L} = -\left( \sum_{l, c \in \mathcal{D}_p}\frac{1}{1+e^{-\mathbf{v}_c^\top\mathbf{v}’<em>l}} + \sum</em>{l, c \in \mathcal{D}_n}\frac{1}{1+e^{\mathbf{v}_c^\top\mathbf{v}’_l}}\right)$$</p>
 <p>An illustration of the model can be found from the following figure. Here the click session set $\mathcal{S}$ can be divided into two parts, 1) booked sessions and 2) exploratory sessions. Booked session is important in the model, since this session is related to the user booking in the end, and this can help predict user’s booking behavior more precisely. After introducing the fist one sessions, the loss function can be described as follows.</p>
-<p>$$\mathcal{L} = -\left( \sum_{l, c \in \mathcal{D}<em>p}\frac{1}{1+e^{-\mathbf{v}_c^\top\mathbf{v}’_l}} + \sum</em>{l, c \in \mathcal{D}<em>n}\frac{1}{1+e^{\mathbf{v}_c^\top\mathbf{v}’_l}} +  \frac{1}{1+e^{-\mathbf{v}</em>{l_b}^\top\mathbf{v}’_l}} \right)$$</p>
-<p><img src="/.io//airbnb-kdd18-fig1.png" alt="Figure 1"></p>
+<p>$$\mathcal{L} = -\left( \sum_{l, c \in \mathcal{D}_p}\frac{1}{1+e^{-\mathbf{v}_c^\top\mathbf{v}’<em>l}} + \sum</em>{l, c \in \mathcal{D}_n}\frac{1}{1+e^{\mathbf{v}_c^\top\mathbf{v}’<em>l}} +  \frac{1}{1+e^{-\mathbf{v}</em>{l_b}^\top\mathbf{v}’_l}} \right)$$</p>
+
+
 <p>Users of online searching may want to look into a series of items groups that are very similar. As the example in the paper, user may search markets that near the place they want to visit. This suggests another technique for negative sampling: instead of random negative sampling, just do negative sampling in the context of positive samples. The negative set is noted as $\mathcal{D}_{m_n}$, and the loss function could be displayed as follows.</p>
-<p>$$\mathcal{L} = -\left( \sum_{l, c \in \mathcal{D}<em>p}\frac{1}{1+e^{-\mathbf{v}_c^\top\mathbf{v}’_l}} + \sum</em>{l, c \in \mathcal{D}<em>n}\frac{1}{1+e^{\mathbf{v}_c^\top\mathbf{v}’_l}} +  \frac{1}{1+e^{-\mathbf{v}</em>{l_b}^\top\mathbf{v}’<em>l}}  +  \sum</em>{l, m_n \in \mathcal{D}_{m_n}}\frac{1}{1+e^{\mathbf{v}_{m_n}^\top\mathbf{v}’_l}} \right) $$</p>
+<p>$$\mathcal{L} = -\left( \sum_{l, c \in \mathcal{D}_p}\frac{1}{1+e^{-\mathbf{v}_c^\top\mathbf{v}’<em>l}} + \sum</em>{l, c \in \mathcal{D}<em>n}\frac{1}{1+e^{\mathbf{v}<em>c^\top\mathbf{v}’<em>l}} +  \frac{1}{1+e^{-\mathbf{v}</em>{l_b}^\top\mathbf{v}’<em>l}}  +  \sum</em>{l, m_n \in \mathcal{D}</em>{m_n}}\frac{1}{1+e^{\mathbf{v}</em>{m_n}^\top\mathbf{v}’_l}} \right) $$</p>
 <p>Another problem is code start of the whole recommendation system. Obviously at first, we don’t have any embeddings because the click data are not available. In order to alleviate this issue, the initial embedding could be learnt from the nearby embeddings. By average the geographical nearby 3 similar embeddings, this averaged vector could be utilized as the initial embedding.</p>
 <p>Finally the embeddings are clusters, and compare the cosine similarity for inter- and intra- cluster points. It can be shown that type and prices of the same cluster points are much closer in the cosine distance, as well as the geographical distance. The results suggest the embedding learning is effective with user clicking behavior as the input. From the figure below, we can find the similar pattern embeddings are clustered together.</p>
 <p>Another challenging task is to train item embeddings from user booking rather than user clicking. Given a list of booking session obtained from different users, it should be possible to learn the embeddings from booked items. However, there are still some difficulties concerning following points. First is the data size problem, since the booking behavior is much less frequent thant the clicking behavior. Another problem is many user only book once without any context, while the same phenomena occur for items, where many items are only booked once. Finally, the booking behavior is sparse, so there may be long time gap between two bookings. During that long time, user may have a huge change in interest. These problems can be solved by o learn embeddings at a level of <em>listing_type</em> instead of <em>listing_id</em>. Here the <em>listing_type</em> is determined by a rule table, which maps various attributes including location, price, listing type, capacity, number of beds, etc to different buckets.</p>
@@ -330,5 +328,20 @@
     </script>
 
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
